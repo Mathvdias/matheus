@@ -26,7 +26,10 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h1 className={styles.title}>Matheus Dias</h1>
+      <h1 className={styles.animatedTitle}>
+          <span>Matheus</span>
+          <span>Dias</span>
+        </h1>
         <p className={styles.description}>
           Bem-vindo ao meu portfólio! Aqui você encontrará minha trajetória de carreira e projetos executados.
         </p>

@@ -34,7 +34,8 @@
   color: #0070f3;
 }
 
-.description {
+.description {  
+  animation: fadeInUp 0.5s forwards;
   text-align: center;
   margin: 1.5rem 0;
   line-height: 1.5;
@@ -47,6 +48,7 @@
 }
 
 .sectionTitle {
+  animation: fadeInUp 1s;
   font-size: 2rem;
   margin-bottom: 1rem;
   text-align: center;
@@ -188,4 +190,54 @@
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.animatedTitle {
+  animation: fadeInUp 0.5s forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 6rem;
+  line-height: 6rem; 
+  letter-spacing: -0.5rem;
+  color: var(--white);
+}
+
+.animatedTitle span {
+  padding: 0 0.67rem;
+  filter: brightness(0.75) invert(1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: colorCycle 10s ease-in-out infinite;
+}
+
+.animatedTitle span:nth-child(1) {
+  background-image: linear-gradient(90deg, #00aaff, #0044cc);
+}
+
+.animatedTitle span:nth-child(2) {
+  background-image: linear-gradient(90deg, #00aaff, #0044cc);
+  animation-delay: 3.33s;
+}
+
+.animatedTitle span:nth-child(3) {
+  background-image: linear-gradient(90deg, #00aaff, #0044cc);
+  animation-delay: 6.66s;
+}
+
+@keyframes colorCycle {
+  0% { 
+    filter: brightness(0.75) invert(1);
+  }
+  11%{
+    filter: none;
+  }
+  33%{
+    filter: none;
+  }
+  55%{
+    filter: brightness(0.75) invert(1);
+  }
 }
