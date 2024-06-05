@@ -48,7 +48,7 @@
 }
 
 .sectionTitle {
-  animation: fadeInUp 1s;
+  animation: fadeInUp .5s backwards;
   font-size: 2rem;
   margin-bottom: 1rem;
   text-align: center;

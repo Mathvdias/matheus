@@ -4,6 +4,7 @@ import Image from 'next/image';
 import ProjectCard from '../components/ProjectCard';
 import { experiences } from '../data/experiences';
 import { getGitHubRepos } from '../lib/github';
+import Head from 'next/head';
 
 const Home = () => {
   const [repos, setRepos] = useState([]);
@@ -25,8 +26,27 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Matheus Vinicius da Silva Dias - Portfólio</title>
+        <meta name="description" content="Portfólio de Matheus Vinicius da Silva Dias - Engenheiro de Software e Desenvolvedor Mobile. Experiências em Flutter, Android, e muito mais." />
+        <meta name="keywords" content="Matheus Vinicius da Silva Dias, portfólio, engenheiro de software, desenvolvedor mobile, software engineer, flutter, android mobile, projetos de software, experiências profissionais, carreira" />
+        <meta name="author" content="Matheus Vinicius da Silva Dias" />
+        <meta property="og:title" content="Matheus Vinicius da Silva Dias - Portfólio" />
+        <meta property="og:description" content="Portfólio de Matheus Vinicius da Silva Dias - Engenheiro de Software e Desenvolvedor Mobile. Experiências em Flutter, Android, e muito mais." />
+        <meta property="og:image" content="https://media.licdn.com/dms/image/C4E03AQGhQW5V0sOxeQ/profile-displayphoto-shrink_200_200/0/1630553066470?e=1723075200&v=beta&t=JiC4voRpPCQ2f54JLKSLrnd4wXHxcZadcaJuV4SOSE0" />
+        <meta property="og:url" content="https://matheusvinicius.vercel.app/" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="https://media.licdn.com/dms/image/C4E03AQGhQW5V0sOxeQ/profile-displayphoto-shrink_200_200/0/1630553066470?e=1723075200&v=beta&t=JiC4voRpPCQ2f54JLKSLrnd4wXHxcZadcaJuV4SOSE0" />
+        <meta name="twitter:title" content="Matheus Vinicius da Silva Dias - Portfólio" />
+        <meta name="twitter:description" content="Portfólio de Matheus Vinicius da Silva Dias - Engenheiro de Software e Desenvolvedor Mobile. Experiências em Flutter, Android, e muito mais." />
+        <meta name="twitter:image" content="https://media.licdn.com/dms/image/C4E03AQGhQW5V0sOxeQ/profile-displayphoto-shrink_200_200/0/1630553066470?e=1723075200&v=beta&t=JiC4voRpPCQ2f54JLKSLrnd4wXHxcZadcaJuV4SOSE0" />
+        <meta name="github:username" content="Mathvdias" />
+        <meta name="robots" content="index, follow" />
+      </Head>
+
+
       <main className={styles.main}>
-      <h1 className={styles.animatedTitle}>
+        <h1 className={styles.animatedTitle}>
           <span>Matheus</span>
           <span>Dias</span>
         </h1>
@@ -51,12 +71,12 @@ const Home = () => {
                     ))}
                   </div>
                 </div>
-                <Image 
-                  src={experience.logo} 
-                  alt={`${experience.company} logo`} 
-                  width={50} 
-                  height={50} 
-                  className={styles.experienceCardLogoRight} 
+                <Image
+                  src={experience.logo}
+                  alt={`${experience.company} logo`}
+                  width={50}
+                  height={50}
+                  className={styles.experienceCardLogoRight}
                 />
               </div>
             ))}
@@ -81,7 +101,7 @@ const Home = () => {
       <footer className={styles.footer}>
         <p>&copy; {new Date().getFullYear()} Matheus Dias. Todos os direitos reservados.</p>
         <p>
-          <a href="https://github.com/Mathvdias" className={styles.link}>GitHub</a> | 
+          <a href="https://github.com/Mathvdias" className={styles.link}>GitHub</a> |
           <a href="https://www.linkedin.com/in/matheusvdias/" className={styles.link}> LinkedIn</a>
         </p>
       </footer>
