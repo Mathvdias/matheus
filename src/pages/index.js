@@ -1,20 +1,22 @@
-import Head from 'next/head';
-import { useEffect, useState } from 'react';
+// src/pages/index.js
+import React, { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css';
+import Image from 'next/image';
+import ProjectCard from '../components/ProjectCard'; // Certifique-se de que o caminho está correto
 import { experiences } from '../data/experiences';
-import ProjectCard from '../components/ProjectCard';
-import { getGitHubRepos } from '../lib/github';
 
 const Home = ({ initialRepos }) => {
-  const [repos, setRepos] = useState(initialRepos);
+  const [repos, setRepos] = useState(initialRepos || []);
   const [error, setError] = useState(null);
+  const defaultImage = 'https://cdn.i-scmp.com/sites/default/files/styles/768x768/public/d8/video/thumbnail/2023/08/21/Clean_0.jpg?itok=Qswnj-td';
 
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const repos = await getGitHubRepos();
-        setRepos(repos);
-      } catch (error) {
+        const res = await fetch('/api/github');
+        const data = await res.json();
+        setRepos(data);
+      } catch (err) {
         setError('Erro ao carregar repositórios.');
       }
     };
@@ -26,12 +28,6 @@ const Home = ({ initialRepos }) => {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Matheus Dias - Portfólio</title>
-        <meta name="description" content="Portfólio de Matheus Dias" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main className={styles.main}>
         <h1 className={styles.title}>Matheus Dias</h1>
         <p className={styles.description}>
@@ -41,8 +37,8 @@ const Home = ({ initialRepos }) => {
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Carreira</h2>
           <div className={styles.experienceGrid}>
-            {experiences.map((experience) => (
-              <div key={experience.role} className={styles.experienceCardRight}>
+            {experiences.map((experience, index) => (
+              <div key={index} className={styles.experienceCardRight}>
                 <div className={styles.experienceCardBody}>
                   <h3 className={styles.experienceCardTitle}>{experience.role}</h3>
                   <p className={styles.experienceCardCompany}>{experience.company}</p>
@@ -50,14 +46,18 @@ const Home = ({ initialRepos }) => {
                   <p className={styles.experienceCardLocation}>{experience.location}</p>
                   <p className={styles.experienceCardDescription}>{experience.description}</p>
                   <div className={styles.experienceCardCompetencies}>
-                    {experience.competencies.map((competency) => (
-                      <span key={competency} className={styles.experienceCardCompetency}>
-                        {competency}
-                      </span>
+                    {experience.competencies.map((competency, i) => (
+                      <span key={i} className={styles.experienceCardCompetency}>{competency}</span>
                     ))}
                   </div>
                 </div>
-                <img src={experience.logo} alt={`${experience.company} logo`} className={styles.experienceCardLogoRight} />
+                <Image 
+                  src={experience.logo} 
+                  alt={`${experience.company} logo`} 
+                  width={50} 
+                  height={50} 
+                  className={styles.experienceCardLogoRight} 
+                />
               </div>
             ))}
           </div>
@@ -65,28 +65,37 @@ const Home = ({ initialRepos }) => {
 
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Projetos Executados</h2>
-          <div className={styles.grid}>
-            {error ? (
-              <p>{error}</p>
-            ) : (
-              repos.map((repo) => (
-                <ProjectCard key={repo.id} repo={repo} defaultImage="https://cdn.i-scmp.com/sites/default/files/styles/768x768/public/d8/video/thumbnail/2023/08/21/Clean_0.jpg?itok=Qswnj-td" />
-              ))
-            )}
-          </div>
+          {error ? (
+            <p>{error}</p>
+          ) : (
+            repos.map((repo) => (
+              <ProjectCard key={repo.id} repo={repo} defaultImage={defaultImage} />
+            ))
+          )}
         </section>
       </main>
+      <footer className={styles.footer}>
+        <a href="https://github.com/matheusdias">
+          GitHub
+        </a>
+      </footer>
     </div>
   );
 };
 
 export async function getStaticProps() {
-  const initialRepos = await getGitHubRepos();
+  let initialRepos = [];
+  try {
+    const res = await fetch('https://api.github.com/users/matheusdias/repos');
+    initialRepos = await res.json();
+  } catch (err) {
+    console.error(err);
+  }
+
   return {
     props: {
       initialRepos,
     },
-    revalidate: 3600,
   };
 }
 
