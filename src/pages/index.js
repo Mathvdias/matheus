@@ -1,30 +1,27 @@
-// src/pages/index.js
 import React, { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image';
-import ProjectCard from '../components/ProjectCard'; // Certifique-se de que o caminho está correto
+import ProjectCard from '../components/ProjectCard';
 import { experiences } from '../data/experiences';
+import { getGitHubRepos } from '../lib/github';
 
-const Home = ({ initialRepos }) => {
-  const [repos, setRepos] = useState(initialRepos || []);
+const Home = () => {
+  const [repos, setRepos] = useState([]);
   const [error, setError] = useState(null);
   const defaultImage = 'https://cdn.i-scmp.com/sites/default/files/styles/768x768/public/d8/video/thumbnail/2023/08/21/Clean_0.jpg?itok=Qswnj-td';
 
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const res = await fetch('/api/github');
-        const data = await res.json();
-        setRepos(data);
+        const repos = await getGitHubRepos('Mathvdias');
+        setRepos(repos);
       } catch (err) {
         setError('Erro ao carregar repositórios.');
       }
     };
 
-    if (!initialRepos.length) {
-      fetchRepos();
-    }
-  }, [initialRepos]);
+    fetchRepos();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -75,28 +72,14 @@ const Home = ({ initialRepos }) => {
         </section>
       </main>
       <footer className={styles.footer}>
-        <a href="https://github.com/matheusdias">
-          GitHub
-        </a>
+        <p>&copy; {new Date().getFullYear()} Matheus Dias. Todos os direitos reservados.</p>
+        <p>
+          <a href="https://github.com/Mathvdias" className={styles.link}>GitHub</a> | 
+          <a href="https://www.linkedin.com/in/matheusvdias/" className={styles.link}> LinkedIn</a>
+        </p>
       </footer>
     </div>
   );
 };
-
-export async function getStaticProps() {
-  let initialRepos = [];
-  try {
-    const res = await fetch('https://api.github.com/users/matheusdias/repos');
-    initialRepos = await res.json();
-  } catch (err) {
-    console.error(err);
-  }
-
-  return {
-    props: {
-      initialRepos,
-    },
-  };
-}
 
 export default Home;

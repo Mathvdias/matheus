@@ -1,0 +1,46 @@
+.card {
+    background: white;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .mediaWrapper {
+    margin-bottom: 1rem;
+  }
+  
+  .cardImage {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+  }
+  
+  .cardVideo {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+  }
+  
+  .globalText {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .link {
+    color: #0070f3;
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
