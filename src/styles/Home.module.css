@@ -1,4 +1,5 @@
 /* styles/Home.module.css */
+
 .container {
   padding: 0 2rem;
 }
@@ -11,6 +12,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'Inter', sans-serif;
 }
 
 .title {
@@ -19,7 +21,6 @@
   font-size: 4rem;
   text-align: center;
   color: #0070f3;
-  font-family: 'Inter', sans-serif;
 }
 
 .description {
@@ -27,12 +28,17 @@
   margin: 1.5rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
-  font-family: 'Inter', sans-serif;
 }
 
 .section {
   margin: 3rem 0;
-  font-family: 'Inter', sans-serif;
+  width: 100%;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .footer {
@@ -42,7 +48,6 @@
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
-  font-family: 'Inter', sans-serif;
 }
 
 .link {
@@ -61,79 +66,84 @@
   gap: 1rem;
 }
 
-.card {
-  background: white;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  text-align: center;
-  width: 100%;
-  max-width: 300px;
-  transition: transform 0.2s;
-  font-family: 'Inter', sans-serif;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.mediaWrapper {
-  margin-bottom: 1rem;
-}
-
-.cardImage {
-  border-radius: 10px;
-}
-
-.cardVideo {
-  border-radius: 10px;
-}
-
-.globalText {
-  font-family: 'Inter', sans-serif;
-}
-
-.experienceContainer {
+.experienceGrid {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
 }
 
-.experienceCard {
-  display: flex;
-  align-items: center;
-  background: #f9f9f9;
-  padding: 1rem;
+.experienceCardRight {
+  position: relative;
+  background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  max-width: 600px;
+  transition: transform 0.2s;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
 }
 
-.logoContainer {
-  margin-right: 1rem;
+.experienceCardRight:hover {
+  transform: translateY(-10px);
 }
 
-.experienceDetails {
-  flex: 1;
+.experienceCardHeader {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 
-.experienceDetails h3 {
-  margin: 0;
-  font-size: 1.2rem;
+.experienceCardLogoRight {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
-.experienceDetails .company {
+.experienceCardBody {
+  flex-grow: 1;
+}
+
+.experienceCardTitle {
+  font-size: 1.2em;
   font-weight: bold;
 }
 
-.experienceDetails .period,
-.experienceDetails .location,
-.experienceDetails .description,
-.experienceDetails .competencies {
-  margin: 0.2rem 0;
+.experienceCardCompany {
+  font-size: 1em;
+  font-weight: 600;
 }
 
-.competencies {
-  font-size: 0.9rem;
+.experienceCardPeriod,
+.experienceCardLocation {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.experienceCardDescription {
+  margin-top: 10px;
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+.experienceCardCompetencies {
+  margin-top: 10px;
+  font-size: 0.8em;
+  color: #333;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.experienceCardCompetency {
+  background: #f1f1f1;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 0.8em;
   color: #555;
 }
