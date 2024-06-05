@@ -1,4 +1,15 @@
-/* styles/Home.module.css */
+/* Adicionando estilos e animações */
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .container {
   padding: 0 2rem;
@@ -84,6 +95,8 @@
   transition: transform 0.2s;
   align-items: center;
   font-family: 'Inter', sans-serif;
+  opacity: 0;
+  animation: fadeInUp 0.5s forwards;
 }
 
 .experienceCardRight:hover {
@@ -146,4 +159,24 @@
   margin: 5px;
   font-size: 0.8em;
   color: #555;
+}
+
+.card {
+  background: white;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: 'Inter', sans-serif;
+  opacity: 0;
+  animation: fadeInUp 0.5s forwards;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }

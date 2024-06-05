@@ -13,8 +13,8 @@ const Home = () => {
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const repos = await getGitHubRepos('Mathvdias');
-        setRepos(repos);
+        const data = await getGitHubRepos('Mathvdias');
+        setRepos(data);
       } catch (err) {
         setError('Erro ao carregar repositórios.');
       }
@@ -35,7 +35,7 @@ const Home = () => {
           <h2 className={styles.sectionTitle}>Carreira</h2>
           <div className={styles.experienceGrid}>
             {experiences.map((experience, index) => (
-              <div key={index} className={styles.experienceCardRight}>
+              <div key={index} className={styles.experienceCardRight} style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className={styles.experienceCardBody}>
                   <h3 className={styles.experienceCardTitle}>{experience.role}</h3>
                   <p className={styles.experienceCardCompany}>{experience.company}</p>
@@ -62,13 +62,17 @@ const Home = () => {
 
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Projetos Executados</h2>
-          {error ? (
-            <p>{error}</p>
-          ) : (
-            repos.map((repo) => (
-              <ProjectCard key={repo.id} repo={repo} defaultImage={defaultImage} />
-            ))
-          )}
+          <div className={styles.grid}>
+            {error ? (
+              <p>{error}</p>
+            ) : (
+              repos.map((repo, index) => (
+                <div key={repo.id} className={styles.card} style={{ animationDelay: `${index * 0.1}s` }}>
+                  <ProjectCard repo={repo} defaultImage={defaultImage} />
+                </div>
+              ))
+            )}
+          </div>
         </section>
       </main>
       <footer className={styles.footer}>

@@ -5,8 +5,8 @@ import styles from '../styles/ProjectCard.module.css';
 const ProjectCard = ({ repo, defaultImage }) => {
   return (
     <div className={styles.card}>
-      <div className={styles.mediaWrapper}>
-        {repo.readmeImage ? (
+      {repo.readmeImage ? (
+        <div className={styles.mediaWrapper}>
           <Image
             src={repo.readmeImage}
             alt={`${repo.name} image`}
@@ -16,7 +16,9 @@ const ProjectCard = ({ repo, defaultImage }) => {
             height={250}
             priority
           />
-        ) : repo.readmeVideo ? (
+        </div>
+      ) : repo.readmeVideo ? (
+        <div className={styles.mediaWrapper}>
           <video
             src={repo.readmeVideo}
             controls
@@ -26,7 +28,9 @@ const ProjectCard = ({ repo, defaultImage }) => {
           >
             Your browser does not support the video tag.
           </video>
-        ) : (
+        </div>
+      ) : (
+        <div className={styles.mediaWrapper}>
           <Image
             src={defaultImage}
             alt={repo.name}
@@ -36,14 +40,14 @@ const ProjectCard = ({ repo, defaultImage }) => {
             height={250}
             priority
           />
-        )}
-      </div>
-      <h3 className={styles.globalText}>
+        </div>
+      )}
+      <h3 className={styles.cardTitle}>
         <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className={styles.link}>
           {repo.name}
         </a>
       </h3>
-      <p className={styles.globalText}>{repo.description}</p>
+      <p className={styles.cardDescription}>{repo.description}</p>
     </div>
   );
 };
