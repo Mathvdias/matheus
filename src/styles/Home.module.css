@@ -1,0 +1,139 @@
+/* styles/Home.module.css */
+.container {
+  padding: 0 2rem;
+}
+
+.main {
+  min-height: 100vh;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+  text-align: center;
+  color: #0070f3;
+  font-family: 'Inter', sans-serif;
+}
+
+.description {
+  text-align: center;
+  margin: 1.5rem 0;
+  line-height: 1.5;
+  font-size: 1.5rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.section {
+  margin: 3rem 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.footer {
+  display: flex;
+  flex: 1;
+  padding: 2rem 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.link {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.card {
+  background: white;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  transition: transform 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.mediaWrapper {
+  margin-bottom: 1rem;
+}
+
+.cardImage {
+  border-radius: 10px;
+}
+
+.cardVideo {
+  border-radius: 10px;
+}
+
+.globalText {
+  font-family: 'Inter', sans-serif;
+}
+
+.experienceContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.experienceCard {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logoContainer {
+  margin-right: 1rem;
+}
+
+.experienceDetails {
+  flex: 1;
+}
+
+.experienceDetails h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.experienceDetails .company {
+  font-weight: bold;
+}
+
+.experienceDetails .period,
+.experienceDetails .location,
+.experienceDetails .description,
+.experienceDetails .competencies {
+  margin: 0.2rem 0;
+}
+
+.competencies {
+  font-size: 0.9rem;
+  color: #555;
+}
