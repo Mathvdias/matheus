@@ -36,8 +36,6 @@ export const getGitHubRepos = async (username) => {
         });
         const readmeContent = readmeResponse.data;
 
-        console.log(`README content for ${repo.name}:\n`, readmeContent);
-
         const lines = readmeContent.split('\n');
         let firstImage = null;
         let firstVideo = null;
@@ -70,8 +68,6 @@ export const getGitHubRepos = async (username) => {
           }
           if (firstImage && firstVideo) break;
         }
-
-        console.log(`First media found for ${repo.name}: Image - ${firstImage}, Video - ${firstVideo}`);
 
         return { ...repo, readmeImage: firstImage, readmeVideo: firstVideo };
       } catch (error) {

@@ -9,7 +9,7 @@ import Head from 'next/head';
 const Home = () => {
   const [repos, setRepos] = useState([]);
   const [error, setError] = useState(null);
-  const defaultImage = 'https://cdn.i-scmp.com/sites/default/files/styles/768x768/public/d8/video/thumbnail/2023/08/21/Clean_0.jpg?itok=Qswnj-td';
+  const defaultImage = 'https://http.cat/images/404.jpg';
 
   useEffect(() => {
     const fetchRepos = async () => {
