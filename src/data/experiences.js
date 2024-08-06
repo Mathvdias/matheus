@@ -3,7 +3,7 @@ export const experiences = [
     role: 'Mobile Software Engineer',
     company: 'Banco PAN',
     logo: 'https://media.licdn.com/dms/image/D4D0BAQE0q-le5zrlsQ/company-logo_200_200/0/1693327148478/banco_pan_logo?e=1725494400&v=beta&t=y4BidEzCm5TbGNgcg8-uR1kPI3P-UiqI7yVYlK-bDL8',
-    period: 'jan de 2024 - o momento · 6 meses',
+    period: 'jan de 2024 - o momento · 8 meses',
     location: 'São Paulo, Brasil · Remota',
     description: `
       - Modularização de componentes DSKit para melhorar a eficiência e a manutenção do código.
